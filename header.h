@@ -1,6 +1,8 @@
 #pragma once
 #include <iostream>
+#include <string>
 
-void func(){
-    std::cout << "hello world!";
-}
+class ship{
+    virtual int get() = 0;
+    virtual ~ship() = 0;
+};
