@@ -30,3 +30,29 @@ submarine::submarine(submarine &obj){
     weapon_count = obj.weapon_count;
     std::cout << "Submarine parameters copied";
 }
+
+void submarine::set(){
+    std::cout << "Enter value:\n";
+    std::cout << "length = ";
+    std::cin >> _len; len = _len;
+    std::cout << "width = ";
+    std::cin >> _width; width = _width;
+    std::cout << "people = ";
+    std::cin >> _people; people = _people;
+    std::cout << "time under water = ";
+    std::cin >> _time_under_water; time_under_water = _time_under_water;
+    std::cout << "max speed = ";
+    std::cin >> _max_speed; max_speed = _max_speed;
+    std::cout << "weapon count = ";
+    std::cin >> _weapon_count; weapon_count = _weapon_count;
+}
+
+void submarine::get(){
+    std::cout << "Parameters\n";
+    std::cout << "length: " << len << std::endl;
+    std::cout << "width: " << width << std::endl;
+    std::cout << "people: " << people << std::endl;
+    std::cout << "time under water" << time_under_water << std::endl;
+    std::cout << "max speed" << max_speed << std::endl;
+    std::cout << "weapon count" << weapon_count << std::endl;
+}
