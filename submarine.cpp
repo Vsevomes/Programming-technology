@@ -7,7 +7,7 @@ submarine::submarine(){
     time_under_water = 100;
     max_speed = 50;
     weapon_count = 10;
-    std::cout << "Submarine parameters set";
+    std::cout << "Submarine parameters set\n";
 }
 
 submarine::submarine(int len_, int width_, int people_,
@@ -18,7 +18,7 @@ submarine::submarine(int len_, int width_, int people_,
         time_under_water = time_under_water_;
         max_speed = max_speed_;
         weapon_count = weapon_count_;
-        std::cout << "Submarine parameters set";
+        std::cout << "Submarine parameters set\n";
 }
 
 submarine::submarine(submarine &obj){
@@ -28,7 +28,7 @@ submarine::submarine(submarine &obj){
     time_under_water = obj.time_under_water;
     max_speed = obj.max_speed;
     weapon_count = obj.weapon_count;
-    std::cout << "Submarine parameters copied";
+    std::cout << "Submarine parameters copied\n";
 }
 
 void submarine::set(){
@@ -45,6 +45,7 @@ void submarine::set(){
     std::cin >> _max_speed; max_speed = _max_speed;
     std::cout << "weapon count = ";
     std::cin >> _weapon_count; weapon_count = _weapon_count;
+    std::cout << std::endl;
 }
 
 void submarine::get(){
@@ -52,7 +53,8 @@ void submarine::get(){
     std::cout << "length: " << len << std::endl;
     std::cout << "width: " << width << std::endl;
     std::cout << "people: " << people << std::endl;
-    std::cout << "time under water" << time_under_water << std::endl;
-    std::cout << "max speed" << max_speed << std::endl;
-    std::cout << "weapon count" << weapon_count << std::endl;
+    std::cout << "time under water: " << time_under_water << std::endl;
+    std::cout << "max speed: " << max_speed << std::endl;
+    std::cout << "weapon count: " << weapon_count << std::endl;
+    std::cout << std::endl;
 }

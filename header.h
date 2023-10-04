@@ -5,7 +5,7 @@
 
 class ship{
 public:
-    virtual ~ship() = 0;
+    virtual ~ship(){};
     virtual void set() = 0;
     //virtual void set (ifstream &f) = 0;
     virtual void get() = 0;
@@ -63,10 +63,3 @@ public:
     void get() override;
 };
 
-void menu(){
-    std::cout << "Select an action:\n";
-    std::cout << "1 - add element\n";
-    std::cout << "2 - remove element\n";
-    std::cout << "3 - show elements\n";
-    std::cout << "4 - change element\n";
-}

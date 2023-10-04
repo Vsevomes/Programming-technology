@@ -51,6 +51,7 @@ void boat::set(){
     std::cin >> _speed; speed = _speed;
     std::cout << "people = ";
     std::cin >> _people; people = _people;
+    std::cout << std::endl;
 }
 
 void boat::get(){
@@ -81,4 +82,5 @@ void boat::get(){
     }
     std::cout << "speed: " << speed << std::endl;
     std::cout << "people: " << people << std::endl;
+    std::cout << std::endl;
 }

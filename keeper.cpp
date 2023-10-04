@@ -10,10 +10,10 @@ keeper<C>::keeper(){
 
 template <typename C>
 keeper<C>::keeper(keeper* obj){
-        if (first != NULL){
-            elem<C>* temp = first;
+        if (obj->first != NULL){
+            elem<C>* temp = obj->first;
             while (temp != NULL) {
-                this.add(temp->data);
+                this->add(*(temp->data));
                 temp = temp->next;
             }
             std::cout << "Queue was copied!" << std::endl;
@@ -24,19 +24,16 @@ keeper<C>::keeper(keeper* obj){
 }
 
 template <typename C>
-C keeper<C>::show_data(elem<C>& x){
-        return x->data.get();
-}
-
-template <typename C>
-void keeper<C>::add(C x){
+void keeper<C>::add(C& x){
         elem<C>* temp = new elem<C>(x);
         if (first == NULL && last == NULL){
             first = last = temp;
+            first->data=last->data=&x;
         }
         else {
             last->next = temp;
             last = temp;
+            last->data=&x;
         }
         elem_count ++;
 }
@@ -67,11 +64,11 @@ void keeper<C>::display(){
             return;
         }
         else {
-            while(temp->next != NULL){
-                std::cout << show_data(temp) << "\n";
+            while(temp->next != NULL){ 
+                (temp->data)->get();
                 temp = temp->next;
             }
-            std::cout << show_data(temp);
+            (temp->data)->get();
             std::cout << std::endl;
         }
 }
