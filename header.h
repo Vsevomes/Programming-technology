@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <fstream>
 #include <string>
 
 class ship{
@@ -61,3 +62,11 @@ public:
     void set() override;
     void get() override;
 };
+
+void menu(){
+    std::cout << "Select an action:\n";
+    std::cout << "1 - add element\n";
+    std::cout << "2 - remove element\n";
+    std::cout << "3 - show elements\n";
+    std::cout << "4 - change element\n";
+}
