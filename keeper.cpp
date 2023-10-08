@@ -5,6 +5,7 @@ keeper::keeper(){
     first = NULL;
     last = NULL;
     elem_count = 0;
+    std::cout << "List created\n";
 }
 
 keeper::keeper(keeper* obj){
@@ -36,6 +37,7 @@ keeper::~keeper(){
         delete first;
         delete last;
     }
+    std::cout << "List deleted\n";
 }
 
 void keeper::add(ship& x){

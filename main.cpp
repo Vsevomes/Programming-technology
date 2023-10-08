@@ -54,10 +54,15 @@ int main(){
                 system("cls");
                 std::cout << "Insert number of element which you wnat to delete: ";
                 std::cin >> ind;
-                if (ind <= container.elem_count)
-                    container.remove(container[ind - 1]);
-                else
-                    std::cout << "Number is outside the list\n";
+                try{
+                    if (ind <= container.elem_count)
+                        container.remove(container[ind - 1]);
+                    else
+                        throw std::string{"Number is outside the list\n"};
+                }
+                catch(std::string mes){
+                    std::cout << mes;
+                }
                 system("pause");
                 system("cls");
                 menu();
@@ -73,10 +78,15 @@ int main(){
                 system("cls");
                 std::cout << "Insert number of element which you wnat to change: ";
                 std::cin >> ind;
-                if (ind <= container.elem_count)
-                    container.change(container[ind - 1]);
-                else
-                    std::cout << "Number is outside the list\n";
+                try{
+                    if (ind <= container.elem_count) 
+                        container.change(container[ind - 1]);
+                    else
+                        throw std::string{"Number is outside the list\n"};
+                }
+                catch(std::string mes){
+                    std::cout << mes;
+                }
                 system("pause");
                 system("cls");
                 menu();
