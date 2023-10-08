@@ -56,6 +56,7 @@ void sailboat::set(){
 }
 
 void sailboat::get(){
+    std::cout << "Sailboat\n";
     std::cout << "Parameters\n";
     if (sailboat_type == 1){
         std::cout << "type of rig: with straight sailing rig" << std::endl;

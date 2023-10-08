@@ -10,15 +10,17 @@ class elem{
         };
     };
 
-class keeper{
-    int elem_count;
+class keeper{ 
 public:
+    int elem_count;
     elem* first;
     elem* last;
     keeper();
     keeper(keeper* obj);
+    //~keeper();
     void add(ship& x);
-    void remove();
+    void remove(elem* temp);
     void display();
     void change();
+    elem* operator[] (const int index);
 };

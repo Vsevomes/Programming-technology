@@ -49,6 +49,7 @@ void submarine::set(){
 }
 
 void submarine::get(){
+    std::cout << "Submarine\n";
     std::cout << "Parameters\n";
     std::cout << "length: " << len << std::endl;
     std::cout << "width: " << width << std::endl;

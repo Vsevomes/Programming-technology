@@ -14,10 +14,10 @@ keeper::keeper(keeper* obj){
                 this->add(*(temp->data));
                 temp = temp->next;
             }
-            std::cout << "Queue was copied!" << std::endl;
+            std::cout << "List was copied!" << std::endl;
         }
         else{
-            std::cout << "Original queue is empty!" << std::endl;
+            std::cout << "Original list is empty!" << std::endl;
         }
 }
 
@@ -35,35 +35,70 @@ void keeper::add(ship& x){
         elem_count ++;
 }
 
-void keeper::remove(){
-        elem* temp = first;
+void keeper::remove(elem* x){
         if (first == NULL) {
-            std::cout << "Queue is empty!" << std::endl;
+            std::cout << "List is empty!" << std::endl;
             return;
         }
         if (first == last) {
+            elem *temp = first;
             first = last = NULL;
+            delete temp;
+            std::cout << "Element removed!" << std::endl;
+        }
+        else if(x == first){
+            elem *temp = first;
+            first = first->next;
+            delete temp;
+            std::cout << "Element removed!" << std::endl;
+        }
+        else if(x == last){
+            elem *temp = first;
+            while (temp->next != last) temp = temp->next;
+            temp->next = NULL;
+            delete last;
+            last = temp;
             std::cout << "Element removed!" << std::endl;
         }
         else {
-            first = first->next;
-            std::cout << "Element removed!" << std::endl;
+            elem* slow = first;
+            elem* fast = first->next;
+            while (fast && fast != x) {
+                fast = fast->next;
+                slow = slow->next;
+            }
+            slow->next = fast->next;
+            delete fast;
         }
-        delete temp;
+        elem_count --;
 }
 
 void keeper::display(){
         elem* temp = first;
+        int i = 1;
         if (first == NULL) {
-            std::cout << "Queue is empty!" << std::endl;
+            std::cout << "List is empty!" << std::endl;
             return;
         }
         else {
             while(temp->next != NULL){ 
+                std::cout << "Element " << i << " - ";
                 (temp->data)->get();
                 temp = temp->next;
+                i++;
             }
+            std::cout << "Element " << i << " - ";
             (temp->data)->get();
             std::cout << std::endl;
         }
+}
+
+elem* keeper::operator[] (const int index) {
+    if (first == NULL && last == NULL) return nullptr;
+    elem* temp = first;
+    for (int i = 0; i < index; i++) {
+        temp = temp->next;
+        if (!temp) return nullptr;
+    }
+    return temp;
 }

@@ -55,6 +55,7 @@ void boat::set(){
 }
 
 void boat::get(){
+    std::cout << "Boat\n";
     std::cout << "Parameters\n";
     if (appointment == 1){
         std::cout << "appointment: for sport" << std::endl;
