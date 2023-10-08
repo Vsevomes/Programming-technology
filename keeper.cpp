@@ -1,31 +1,47 @@
 #include "header.h"
 #include "keeper.h"
 
-template <typename C>
-keeper<C>::keeper(){
+keeper::keeper(){
     first = NULL;
     last = NULL;
     elem_count = 0;
+    std::cout << "List created\n";
 }
 
-template <typename C>
-keeper<C>::keeper(keeper* obj){
+keeper::keeper(keeper* obj){
         if (obj->first != NULL){
-            elem<C>* temp = obj->first;
+            elem* temp = obj->first;
             while (temp != NULL) {
                 this->add(*(temp->data));
                 temp = temp->next;
             }
-            std::cout << "Queue was copied!" << std::endl;
+            std::cout << "List was copied!" << std::endl;
         }
         else{
-            std::cout << "Original queue is empty!" << std::endl;
+            std::cout << "Original list is empty!" << std::endl;
         }
 }
 
-template <typename C>
-void keeper<C>::add(C& x){
-        elem<C>* temp = new elem<C>(x);
+keeper::~keeper(){
+    if (first == NULL) return;
+    if (first == last) {
+            delete first;
+            delete last;
+        }
+    else{
+        while (first != last){
+            elem* temp = first;
+            first = first->next;
+            delete temp;
+        }
+        delete first;
+        delete last;
+    }
+    std::cout << "List deleted\n";
+}
+
+void keeper::add(ship& x){
+        elem* temp = new elem(x);
         if (first == NULL && last == NULL){
             first = last = temp;
             first->data=last->data=&x;
@@ -38,41 +54,114 @@ void keeper<C>::add(C& x){
         elem_count ++;
 }
 
-template <typename C>
-void keeper<C>::remove(){
-        elem<C>* temp = first;
+void keeper::remove(elem* x){
         if (first == NULL) {
-            std::cout << "Queue is empty!" << std::endl;
+            std::cout << "List is empty!" << std::endl;
             return;
         }
         if (first == last) {
+            elem *temp = first;
             first = last = NULL;
+            delete temp;
+            std::cout << "Element removed!" << std::endl;
+        }
+        else if(x == first){
+            elem *temp = first;
+            first = first->next;
+            delete temp;
+            std::cout << "Element removed!" << std::endl;
+        }
+        else if(x == last){
+            elem *temp = first;
+            while (temp->next != last) temp = temp->next;
+            temp->next = NULL;
+            delete last;
+            last = temp;
             std::cout << "Element removed!" << std::endl;
         }
         else {
-            first = first->next;
-            std::cout << "Element removed!" << std::endl;
+            elem* slow = first;
+            elem* fast = first->next;
+            while (fast && fast != x) {
+                fast = fast->next;
+                slow = slow->next;
+            }
+            slow->next = fast->next;
+            delete fast;
         }
-        delete temp;
+        elem_count --;
 }
 
-template <typename C>
-void keeper<C>::display(){
-        elem<C>* temp = first;
+void keeper::display(){
+        elem* temp = first;
+        int i = 1;
         if (first == NULL) {
-            std::cout << "Queue is empty!" << std::endl;
+            std::cout << "List is empty!" << std::endl;
             return;
         }
         else {
             while(temp->next != NULL){ 
+                std::cout << "Element " << i << " - ";
                 (temp->data)->get();
                 temp = temp->next;
+                i++;
             }
+            std::cout << "Element " << i << " - ";
             (temp->data)->get();
             std::cout << std::endl;
         }
 }
 
-template class keeper<submarine>;
-template class keeper<sailboat>;
-template class keeper<boat>;
+void keeper::change(elem* x){
+    ship* temp= x->data;
+    temp->set();
+    x->data = temp;
+}
+
+elem* keeper::operator[] (const int index) {
+    if (first == NULL && last == NULL) return nullptr;
+    elem* temp = first;
+    for (int i = 0; i < index; i++) {
+        temp = temp->next;
+        if (!temp) return nullptr;
+    }
+    return temp;
+}
+
+void keeper::write(std::ofstream &f){
+    elem* temp = first;
+        if (first == NULL) {
+            return;
+        }
+        else {
+            while(temp->next != NULL){ 
+                (temp->data)->get(f);
+                temp = temp->next;
+            }
+            (temp->data)->get(f);
+        }
+}
+
+void keeper::read(std::ifstream &f, ship *p, submarine *sub, sailboat *sail, boat *bot){
+    std::string flag;
+    while (getline(f, flag)){
+            if (flag == "sub"){
+                sub = new submarine;
+                sub->set(f);
+                p = sub;
+                add(*p);
+            }
+            else if(flag == "sail"){
+                sail = new sailboat;
+                        sail->set(f);
+                        p = sail;
+                        add(*p);
+            }
+            else if(flag == "boat"){
+                bot = new boat;
+                bot->set(f);
+                p = bot;
+                add(*p);
+            }
+        }
+}

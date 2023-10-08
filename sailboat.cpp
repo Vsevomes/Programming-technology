@@ -7,7 +7,7 @@ sailboat::sailboat(){
     len = 20;
     speed = 50;
     people = 5;
-    std::cout << "Sailboat parameters set";
+    std::cout << "Sailboat parameters set\n";
 }
 
 sailboat::sailboat(int sailboat_type_, std::string name_, int type_,
@@ -18,7 +18,7 @@ sailboat::sailboat(int sailboat_type_, std::string name_, int type_,
         len = len_;
         speed = speed_;
         people = people_;
-        std::cout << "Sailboat parameters set";
+        std::cout << "Sailboat parameters set\n";
 }
 
 sailboat::sailboat(sailboat &obj){
@@ -28,7 +28,7 @@ sailboat::sailboat(sailboat &obj){
     len = obj.len;
     speed = obj.speed;
     people = obj.people;
-    std::cout << "Sailboat parameters copied";
+    std::cout << "Sailboat parameters copied\n";
 }
 
 void sailboat::set(){
@@ -55,7 +55,17 @@ void sailboat::set(){
     std::cout << std::endl; 
 }
 
+void sailboat::set(std::ifstream &f){
+    f >> sailboat_type;
+    f >> name;
+    f >> type;
+    f >> len;
+    f >> speed;
+    f >> people;
+}
+
 void sailboat::get(){
+    std::cout << "Sailboat\n";
     std::cout << "Parameters\n";
     if (sailboat_type == 1){
         std::cout << "type of rig: with straight sailing rig" << std::endl;
@@ -77,4 +87,14 @@ void sailboat::get(){
     std::cout << "speed: " << speed << std::endl;
     std::cout << "peopls: " << people << std::endl;
     std::cout << std::endl;
+}
+
+void sailboat::get(std::ofstream &f){
+    f << "sail" << std::endl;
+    f << sailboat_type << std::endl;
+    f << name << std::endl;
+    f << type << std::endl;
+    f << len << std::endl;
+    f << speed << std::endl;
+    f << people << std::endl;
 }

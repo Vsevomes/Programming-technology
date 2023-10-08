@@ -6,7 +6,7 @@ boat::boat(){
     ride_quality = 1;
     speed = 50;
     people = 5;
-    std::cout << "Boat parameters set";
+    std::cout << "Boat parameters set\n";
 }
 
 boat::boat(int appointment_, int material_, int ride_quality_,
@@ -16,7 +16,7 @@ boat::boat(int appointment_, int material_, int ride_quality_,
         ride_quality = ride_quality_;
         speed = speed_;
         people = people_;
-        std::cout << "Boat parameters set";
+        std::cout << "Boat parameters set\n";
 }
 
 boat::boat(boat &obj){
@@ -25,7 +25,7 @@ boat::boat(boat &obj){
     ride_quality = obj.ride_quality;
     speed = obj.speed;
     people = obj.people;
-    std::cout << "Boat parameters copied";
+    std::cout << "Boat parameters copied\n";
 }
 
 void boat::set(){
@@ -54,7 +54,16 @@ void boat::set(){
     std::cout << std::endl;
 }
 
+void boat::set(std::ifstream &f){
+    f >> appointment;
+    f >> material;
+    f >> ride_quality;
+    f >> speed;
+    f >> people;
+}
+
 void boat::get(){
+    std::cout << "Boat\n";
     std::cout << "Parameters\n";
     if (appointment == 1){
         std::cout << "appointment: for sport" << std::endl;
@@ -83,4 +92,13 @@ void boat::get(){
     std::cout << "speed: " << speed << std::endl;
     std::cout << "people: " << people << std::endl;
     std::cout << std::endl;
+}
+
+void boat::get(std::ofstream &f){
+    f << "boat" << std::endl;
+    f << appointment << std::endl;
+    f << material << std::endl;
+    f << ride_quality << std::endl;
+    f << speed << std::endl;
+    f << people << std::endl;
 }
