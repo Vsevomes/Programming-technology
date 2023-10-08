@@ -23,5 +23,6 @@ public:
     void display();
     void change(elem*);
     void write(std::ofstream &f);
+    void read(std::ifstream &f, ship *p, submarine *sub, sailboat *sail, boat *bot);
     elem* operator[] (const int index);
 };

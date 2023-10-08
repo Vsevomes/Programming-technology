@@ -48,6 +48,15 @@ void submarine::set(){
     std::cout << std::endl;
 }
 
+void submarine::set(std::ifstream &f){
+    f >> len;
+    f >> width;
+    f >> people;
+    f >> time_under_water;
+    f >> max_speed;
+    f >> weapon_count;
+}
+
 void submarine::get(){
     std::cout << "Submarine\n";
     std::cout << "Parameters\n";

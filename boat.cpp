@@ -54,6 +54,14 @@ void boat::set(){
     std::cout << std::endl;
 }
 
+void boat::set(std::ifstream &f){
+    f >> appointment;
+    f >> material;
+    f >> ride_quality;
+    f >> speed;
+    f >> people;
+}
+
 void boat::get(){
     std::cout << "Boat\n";
     std::cout << "Parameters\n";

@@ -14,6 +14,20 @@ int main(){
     sailboat* sail;
     boat* bot;
     ship *p;
+
+    int upload;
+    std::cout << "Do you want to upload list from file?\n";
+    std::cout << "1 - yes\n";
+    std::cout << "2 - no\n";
+    std::cin >> upload;
+    if (upload == 1){
+        system("cls");
+        std::ifstream in("param.txt");
+        container.read(in, p, sub, sail, bot);
+        in.close();
+    }
+    system("cls");
+
     menu();
     while(action != 0){
         switch(action){
@@ -103,7 +117,7 @@ int main(){
 
     system("cls");
     int save;
-    std::cout << "Do you want to save file?\n";
+    std::cout << "Do you want to save list in file?\n";
     std::cout << "1 - yes\n";
     std::cout << "2 - no\n";
     std::cin >> save;

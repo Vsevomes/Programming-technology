@@ -7,7 +7,7 @@ class ship{
 public:
     virtual ~ship(){};
     virtual void set() = 0;
-    //virtual void set(std::ifstream &f) = 0;
+    virtual void set(std::ifstream &f) = 0;
     virtual void get() = 0;
     virtual void get(std::ofstream &f) = 0;
 };
@@ -27,6 +27,7 @@ public:
     int time_under_water_, int max_speed_, int weapon_count_);
     submarine(submarine &obj);
     void set() override;
+    void set(std::ifstream &f);
     void get() override;
     void get(std::ofstream &f) override;
 };
@@ -46,6 +47,7 @@ public:
     int len_, int speed_, int people_);
     sailboat(sailboat &obj);
     void set() override;
+    void set(std::ifstream &f);
     void get() override;
     void get(std::ofstream &f) override;
 };
@@ -63,6 +65,7 @@ public:
     int speed_, int people_);
     boat(boat &obj);
     void set() override;
+    void set(std::ifstream &f);
     void get() override;
     void get(std::ofstream &f) override;
 };

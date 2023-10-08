@@ -141,3 +141,27 @@ void keeper::write(std::ofstream &f){
             (temp->data)->get(f);
         }
 }
+
+void keeper::read(std::ifstream &f, ship *p, submarine *sub, sailboat *sail, boat *bot){
+    std::string flag;
+    while (getline(f, flag)){
+            if (flag == "sub"){
+                sub = new submarine;
+                sub->set(f);
+                p = sub;
+                add(*p);
+            }
+            else if(flag == "sail"){
+                sail = new sailboat;
+                        sail->set(f);
+                        p = sail;
+                        add(*p);
+            }
+            else if(flag == "boat"){
+                bot = new boat;
+                bot->set(f);
+                p = bot;
+                add(*p);
+            }
+        }
+}

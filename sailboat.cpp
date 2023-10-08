@@ -55,6 +55,15 @@ void sailboat::set(){
     std::cout << std::endl; 
 }
 
+void sailboat::set(std::ifstream &f){
+    f >> sailboat_type;
+    f >> name;
+    f >> type;
+    f >> len;
+    f >> speed;
+    f >> people;
+}
+
 void sailboat::get(){
     std::cout << "Sailboat\n";
     std::cout << "Parameters\n";
