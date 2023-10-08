@@ -7,7 +7,7 @@ sailboat::sailboat(){
     len = 20;
     speed = 50;
     people = 5;
-    std::cout << "Sailboat parameters set";
+    std::cout << "Sailboat parameters set\n";
 }
 
 sailboat::sailboat(int sailboat_type_, std::string name_, int type_,
@@ -18,7 +18,7 @@ sailboat::sailboat(int sailboat_type_, std::string name_, int type_,
         len = len_;
         speed = speed_;
         people = people_;
-        std::cout << "Sailboat parameters set";
+        std::cout << "Sailboat parameters set\n";
 }
 
 sailboat::sailboat(sailboat &obj){
@@ -28,7 +28,7 @@ sailboat::sailboat(sailboat &obj){
     len = obj.len;
     speed = obj.speed;
     people = obj.people;
-    std::cout << "Sailboat parameters copied";
+    std::cout << "Sailboat parameters copied\n";
 }
 
 void sailboat::set(){

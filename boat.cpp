@@ -6,7 +6,7 @@ boat::boat(){
     ride_quality = 1;
     speed = 50;
     people = 5;
-    std::cout << "Boat parameters set";
+    std::cout << "Boat parameters set\n";
 }
 
 boat::boat(int appointment_, int material_, int ride_quality_,
@@ -16,7 +16,7 @@ boat::boat(int appointment_, int material_, int ride_quality_,
         ride_quality = ride_quality_;
         speed = speed_;
         people = people_;
-        std::cout << "Boat parameters set";
+        std::cout << "Boat parameters set\n";
 }
 
 boat::boat(boat &obj){
@@ -25,7 +25,7 @@ boat::boat(boat &obj){
     ride_quality = obj.ride_quality;
     speed = obj.speed;
     people = obj.people;
-    std::cout << "Boat parameters copied";
+    std::cout << "Boat parameters copied\n";
 }
 
 void boat::set(){

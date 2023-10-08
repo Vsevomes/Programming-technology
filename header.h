@@ -11,7 +11,7 @@ public:
     virtual void get() = 0;
 };
 
-class submarine:ship{
+class submarine : public ship{
     int len;
     int width;
     int people;
@@ -29,7 +29,7 @@ public:
     void get() override;
 };
 
-class sailboat:ship{
+class sailboat : public ship{
     int sailboat_type;
     std::string name;
     int type;
@@ -47,7 +47,7 @@ public:
     void get() override;
 };
 
-class boat:ship{
+class boat : public ship{
     int appointment;
     int material;
     int ride_quality;

@@ -1,17 +1,15 @@
 #include "header.h"
 #include "keeper.h"
 
-template <typename C>
-keeper<C>::keeper(){
+keeper::keeper(){
     first = NULL;
     last = NULL;
     elem_count = 0;
 }
 
-template <typename C>
-keeper<C>::keeper(keeper* obj){
+keeper::keeper(keeper* obj){
         if (obj->first != NULL){
-            elem<C>* temp = obj->first;
+            elem* temp = obj->first;
             while (temp != NULL) {
                 this->add(*(temp->data));
                 temp = temp->next;
@@ -23,9 +21,8 @@ keeper<C>::keeper(keeper* obj){
         }
 }
 
-template <typename C>
-void keeper<C>::add(C& x){
-        elem<C>* temp = new elem<C>(x);
+void keeper::add(ship& x){
+        elem* temp = new elem(x);
         if (first == NULL && last == NULL){
             first = last = temp;
             first->data=last->data=&x;
@@ -38,9 +35,8 @@ void keeper<C>::add(C& x){
         elem_count ++;
 }
 
-template <typename C>
-void keeper<C>::remove(){
-        elem<C>* temp = first;
+void keeper::remove(){
+        elem* temp = first;
         if (first == NULL) {
             std::cout << "Queue is empty!" << std::endl;
             return;
@@ -56,9 +52,8 @@ void keeper<C>::remove(){
         delete temp;
 }
 
-template <typename C>
-void keeper<C>::display(){
-        elem<C>* temp = first;
+void keeper::display(){
+        elem* temp = first;
         if (first == NULL) {
             std::cout << "Queue is empty!" << std::endl;
             return;
@@ -72,7 +67,3 @@ void keeper<C>::display(){
             std::cout << std::endl;
         }
 }
-
-template class keeper<submarine>;
-template class keeper<sailboat>;
-template class keeper<boat>;

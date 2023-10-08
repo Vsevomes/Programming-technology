@@ -10,13 +10,21 @@ void menu(){
 }
 
 int main(){
-keeper<submarine> sub;
-submarine s, d;
-s.set();
-d.set();
-sub.add(s);
-sub.add(d);
-sub.display();
+    submarine sub;
+    sailboat sail;
+    boat boat;
+    ship *pSub = &sub;
+    ship *pSail = &sail;
+    ship *pBoat = &boat;
+    keeper obj;
+    pSub->set();
+    pSail->set();
+    pBoat->set();
+    obj.add(*pSub);
+    obj.add(*pSail);
+    obj.add(*pBoat);
+    obj.display();
+
 
     return 0;
 }
