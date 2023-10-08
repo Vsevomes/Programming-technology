@@ -79,3 +79,13 @@ void sailboat::get(){
     std::cout << "peopls: " << people << std::endl;
     std::cout << std::endl;
 }
+
+void sailboat::get(std::ofstream &f){
+    f << "sail" << std::endl;
+    f << sailboat_type << std::endl;
+    f << name << std::endl;
+    f << type << std::endl;
+    f << len << std::endl;
+    f << speed << std::endl;
+    f << people << std::endl;
+}

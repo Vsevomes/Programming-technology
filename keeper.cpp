@@ -127,3 +127,17 @@ elem* keeper::operator[] (const int index) {
     }
     return temp;
 }
+
+void keeper::write(std::ofstream &f){
+    elem* temp = first;
+        if (first == NULL) {
+            return;
+        }
+        else {
+            while(temp->next != NULL){ 
+                (temp->data)->get(f);
+                temp = temp->next;
+            }
+            (temp->data)->get(f);
+        }
+}

@@ -85,3 +85,12 @@ void boat::get(){
     std::cout << "people: " << people << std::endl;
     std::cout << std::endl;
 }
+
+void boat::get(std::ofstream &f){
+    f << "boat" << std::endl;
+    f << appointment << std::endl;
+    f << material << std::endl;
+    f << ride_quality << std::endl;
+    f << speed << std::endl;
+    f << people << std::endl;
+}

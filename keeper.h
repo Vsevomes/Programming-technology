@@ -22,5 +22,6 @@ public:
     void remove(elem* temp);
     void display();
     void change(elem*);
+    void write(std::ofstream &f);
     elem* operator[] (const int index);
 };

@@ -59,3 +59,13 @@ void submarine::get(){
     std::cout << "weapon count: " << weapon_count << std::endl;
     std::cout << std::endl;
 }
+
+void submarine::get(std::ofstream &f){
+    f << "sub" << std::endl;
+    f << len << std::endl;
+    f << width << std::endl;
+    f << people << std::endl;
+    f << time_under_water << std::endl;
+    f << max_speed << std::endl;
+    f << weapon_count << std::endl;
+}

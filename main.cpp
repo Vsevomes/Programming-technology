@@ -101,6 +101,25 @@ int main(){
         }
     }
 
+    system("cls");
+    int save;
+    std::cout << "Do you want to save file?\n";
+    std::cout << "1 - yes\n";
+    std::cout << "2 - no\n";
+    std::cin >> save;
+    if (save == 1){
+        std::ofstream clear("param.txt");
+        clear.close();
+        std::ofstream out("param.txt", std::ios_base::app);
+        container.write(out);
+        out.close();
+        system("cls");
+    }
+    else{
+        system("cls");
+        return 0;
+    }
+
     return 0;
 }
 
