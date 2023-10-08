@@ -17,10 +17,10 @@ public:
     elem* last;
     keeper();
     keeper(keeper* obj);
-    //~keeper();
+    ~keeper();
     void add(ship& x);
     void remove(elem* temp);
     void display();
-    void change();
+    void change(elem*);
     elem* operator[] (const int index);
 };

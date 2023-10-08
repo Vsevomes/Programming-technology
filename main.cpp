@@ -70,9 +70,23 @@ int main(){
                 menu();
                 break;
             case 4:
+                system("cls");
+                std::cout << "Insert number of element which you wnat to change: ";
+                std::cin >> ind;
+                if (ind <= container.elem_count)
+                    container.change(container[ind - 1]);
+                else
+                    std::cout << "Number is outside the list\n";
+                system("pause");
+                system("cls");
+                menu();
                 break;
             default:
+                system("cls");
                 std::cout << "Wrong command\n";
+                system("pause");
+                system("cls");
+                menu();
                 break;
         }
     }

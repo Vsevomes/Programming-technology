@@ -21,6 +21,23 @@ keeper::keeper(keeper* obj){
         }
 }
 
+keeper::~keeper(){
+    if (first == NULL) return;
+    if (first == last) {
+            delete first;
+            delete last;
+        }
+    else{
+        while (first != last){
+            elem* temp = first;
+            first = first->next;
+            delete temp;
+        }
+        delete first;
+        delete last;
+    }
+}
+
 void keeper::add(ship& x){
         elem* temp = new elem(x);
         if (first == NULL && last == NULL){
@@ -91,6 +108,12 @@ void keeper::display(){
             (temp->data)->get();
             std::cout << std::endl;
         }
+}
+
+void keeper::change(elem* x){
+    ship* temp= x->data;
+    temp->set();
+    x->data = temp;
 }
 
 elem* keeper::operator[] (const int index) {
