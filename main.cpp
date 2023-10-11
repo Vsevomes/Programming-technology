@@ -122,8 +122,6 @@ int main(){
     std::cout << "2 - no\n";
     std::cin >> save;
     if (save == 1){
-        std::ofstream clear("param.txt");
-        clear.close();
         std::ofstream out("param.txt", std::ios_base::app);
         container.write(out);
         out.close();
